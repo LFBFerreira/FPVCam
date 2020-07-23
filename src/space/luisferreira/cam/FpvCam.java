@@ -153,8 +153,6 @@ public class FpvCam extends PeasyCam {
 
         String jsonData = gson.toJson(cameraStates);
 
-        System.out.println("Saving camera states to " + saveFile.getAbsolutePath());
-
         try (FileWriter file = new FileWriter(saveFile)) {
             file.write(jsonData);
             file.flush();

@@ -201,7 +201,6 @@ ${line}
 	
 	
 	<target name="generate.javadoc" if="is.normal">
-		<echo>${classpath.libraries.include}</echo>
 	  	<!-- create the java reference of the Library -->
 		<javadoc bottom="Processing Library ${project.name} by ${author.name}. ${library.copyright}" 
 				classpath="${classpath.local.location}/core.jar;{project.bin};${classpath.libraries.include}"

@@ -1,9 +1,0 @@
-<component name="ArtifactManager">
-  <artifact name="Libraries">
-    <output-path>$PROJECT_DIR$/bin/</output-path>
-    <root id="root">
-      <element id="library" level="project" name="peasy" />
-      <element id="library" level="project" name="gson-2.8.6" />
-    </root>
-  </artifact>
-</component>

@@ -201,10 +201,10 @@ ${line}
 	
 	
 	<target name="generate.javadoc" if="is.normal">
-		<echo>${project.bin}</echo>
+		<echo>${classpath.libraries.include}</echo>
 	  	<!-- create the java reference of the Library -->
 		<javadoc bottom="Processing Library ${project.name} by ${author.name}. ${library.copyright}" 
-				classpath="${classpath.local.location}/core.jar;{project.bin}"
+				classpath="${classpath.local.location}/core.jar;{project.bin};${classpath.libraries.include}"
 				destdir="${project.tmp}/${project.name}/reference" 
 				verbose="false" 
 				stylesheetfile="resources/stylesheet.css" 

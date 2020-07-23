@@ -13,5 +13,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="library" name="core" level="project" />
     <orderEntry type="library" name="ant-1.5" level="project" />
+    <orderEntry type="library" name="gson-2.8.6" level="project" />
+    <orderEntry type="library" name="peasy" level="project" />
   </component>
 </module>

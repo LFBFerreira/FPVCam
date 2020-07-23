@@ -1,8 +1,8 @@
-package space.luis.video.test;
+package space.luisferreira.cam.test;
 
 import processing.core.PApplet;
 import processing.core.PConstants;
-import space.luis.video.FpvCam;
+import space.luisferreira.cam.FpvCam;
 
 public class TestSketch extends PApplet {
 
@@ -12,12 +12,6 @@ public class TestSketch extends PApplet {
     }
 
     // ================================================================
-
-    /**
-     * Dispose Method
-     */
-    public void dispose() {
-    }
 
     /**
      * Settings Method

@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"space.luis.video"},{"l":"space.luis.video.test"}]
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"space.luisferreira.cam"},{"l":"space.luisferreira.cam.test"}]

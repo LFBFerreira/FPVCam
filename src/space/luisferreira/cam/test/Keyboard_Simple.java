@@ -1,35 +1,38 @@
 package space.luisferreira.cam.test;
 
 import processing.core.PApplet;
-import processing.core.PConstants;
 import processing.event.KeyEvent;
 import space.luisferreira.cam.FpvCam;
+import peasy.PeasyCam;
 
 public class Keyboard_Simple extends PApplet {
+    // movement speed
     float PANNING_SPEED = 3;
+
+    // camera clipping distance
     int CAMERA_ZFAR = 6000;
+
+    // camera field of view
     float CAMERA_FOVY = 3.0f;
 
-    public FpvCam camera;
+    FpvCam camera;
 
-    public Keyboard_Simple() {
-    }
-
-    // ================================================================
 
     public void settings() {
         size(800, 600, P3D);
     }
 
     public void setup() {
+        // create a new camera, with a distance of 100 to the focus point
         camera = new FpvCam(this, 100);
+
         this.registerMethod("keyEvent", this);
     }
 
     public void draw() {
         background(255);
 
-        //
+        // manually update the camera in draw
         camera.updateCamera();
 
         // fix for clipping when close to surfaces
@@ -41,7 +44,7 @@ public class Keyboard_Simple extends PApplet {
         scale(2);
         noStroke();
         fill(0, 255, 100);
-        circle(0, 0,  10);
+        circle(0, 0, 10);
         pushMatrix();
         translate(20, 0);
         fill(0, 0, 255);
@@ -50,52 +53,52 @@ public class Keyboard_Simple extends PApplet {
     }
 
     public void keyEvent(KeyEvent event) {
-
         // Navigation keys
         switch (event.getKey()) {
-            // normal speed
             case 's':
                 if (event.getAction() == KeyEvent.PRESS) {
-                    camera.panCameraStart(0, 0, PANNING_SPEED, true);
+                    camera.startPan(0, 0, PANNING_SPEED, true);
                 } else if (event.getAction() == KeyEvent.RELEASE) {
-                    camera.panCameraStop(0, 0, PANNING_SPEED);
+                    camera.stopPan(0, 0, PANNING_SPEED);
                 }
                 break;
             case 'w':
                 if (event.getAction() == KeyEvent.PRESS) {
-                    camera.panCameraStart(0, 0, -PANNING_SPEED, true);
+                    camera.startPan(0, 0, -PANNING_SPEED, true);
                 } else if (event.getAction() == KeyEvent.RELEASE) {
-                    camera.panCameraStop(0, 0, -PANNING_SPEED);
+                    camera.stopPan(0, 0, -PANNING_SPEED);
                 }
                 break;
             case 'a':
                 if (event.getAction() == KeyEvent.PRESS) {
-                    camera.panCameraStart(-PANNING_SPEED, 0, 0, true);
+                    camera.startPan(-PANNING_SPEED, 0, 0, true);
                 } else if (event.getAction() == KeyEvent.RELEASE) {
-                    camera.panCameraStop(-PANNING_SPEED, 0, 0);
+                    camera.stopPan(-PANNING_SPEED, 0, 0);
                 }
                 break;
             case 'd':
                 if (event.getAction() == KeyEvent.PRESS) {
-                    camera.panCameraStart(PANNING_SPEED, 0, 0, true);
+                    camera.startPan(PANNING_SPEED, 0, 0, true);
                 } else if (event.getAction() == KeyEvent.RELEASE) {
-                    camera.panCameraStop(PANNING_SPEED, 0, 0);
+                    camera.stopPan(PANNING_SPEED, 0, 0);
                 }
                 break;
             case 'q':
                 if (event.getAction() == KeyEvent.PRESS) {
-                    camera.panCameraStart(0, PANNING_SPEED, 0, false);
+                    camera.startPan(0, PANNING_SPEED, 0, false);
                 } else if (event.getAction() == KeyEvent.RELEASE) {
-                    camera.panCameraStop(0, PANNING_SPEED, 0);
+                    camera.stopPan(0, PANNING_SPEED, 0);
                 }
                 break;
             case 'e':
                 if (event.getAction() == KeyEvent.PRESS) {
-                    camera.panCameraStart(0, -PANNING_SPEED, 0, false);
+                    camera.startPan(0, -PANNING_SPEED, 0, false);
                 } else if (event.getAction() == KeyEvent.RELEASE) {
-                    camera.panCameraStop(0, -PANNING_SPEED, 0);
+                    camera.stopPan(0, -PANNING_SPEED, 0);
                 }
                 break;
+            case ' ':
+                camera.stop();
         }
     }
 }

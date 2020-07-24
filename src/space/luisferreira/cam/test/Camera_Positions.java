@@ -8,15 +8,16 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class Camera_Positions extends PApplet {
-    public FpvCam camera;
-    private final String CAMERA_STATES_FILE = "cameras.json";
+    String CAMERA_STATES_FILE = "cameras.json";
+
+    // camera clipping distance
     int CAMERA_ZFAR = 6000;
+
+    // camera field of view
     float CAMERA_FOVY = 3.0f;
 
-    public Camera_Positions() {
-    }
+    public FpvCam camera;
 
-    // ================================================================
 
     public void settings() {
         size(800, 600, P3D);
@@ -50,44 +51,35 @@ public class Camera_Positions extends PApplet {
         popMatrix();
     }
 
-    /**
-     *
-     * @param event
-     */
     public void keyEvent(KeyEvent event) {
         if (event.getAction() == KeyEvent.RELEASE) {
             switch (event.getKey()) {
                 case 's':
-                    saveCameraState();
-                    break;
-                case '+':
-                    camera.goToNextCameraState(500);
-                    break;
-                case '-':
-                    camera.goToPreviousCameraState(500);
+                    camera.saveCameraState();
+                    println("Camera state saved");
                     break;
                 case 'd':
                     camera.deleteCameraState();
+                    println("Camera state deleted");
                     break;
                 case 'f':
                     saveCameraStatesToFile();
+                    break;
+                case '+':
+                    camera.goToNextState(500);
+                    println("Camera state " + camera.getStateIndex());
+                    break;
+                case '-':
+                    camera.goToPreviousState(500);
+                    println("Camera state " + camera.getStateIndex());
                     break;
             }
         }
     }
 
-    /**
-     *
-     */
-    void saveCameraState() {
-        println("Saving camera position");
-        camera.cameraStates.add(camera.getState());
-    }
 
-    /**
-     *
-     */
     void saveCameraStatesToFile() {
+        // get the path to the resource, root is the sketch path
         Path filePath = Paths.get(sketchPath(CAMERA_STATES_FILE));
         println("Saving camera states to " + filePath.toAbsolutePath());
         camera.saveCameraStatesToFile(filePath);

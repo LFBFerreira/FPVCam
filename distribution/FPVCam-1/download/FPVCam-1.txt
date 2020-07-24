@@ -25,13 +25,13 @@ categories = "Video & Vision"
 # repeating the name of your Library here. Also, avoid saying anything redundant 
 # like mentioning that it's a Library. This should start with a capitalized 
 # letter, and end with a period.
-sentence = FPV Cam takes the ease of use of PeasyCam and adds keyboard key movement
+sentence = FPV Cam takes the ease of use of PeasyCam and adds keyboard key movement and predefined camera positions
 
 # Additional information suitable for the Processing website. The value of
 # 'sentence' always will be prepended, so you should start by writing the
 # second sentence here. If your Library only works on certain operating systems,
 # mention it here.
-paragraph = FPV Cam takes the ease of use of PeasyCam and adds keyboard key movement
+paragraph = This library extends the behaviour of the popular library Peasycam by Jonathan Feinberg, and was tested on Processing 3.5.3
 
 # Links in the 'sentence' and 'paragraph' attributes can be inserted using the
 # same syntax as for authors. 
@@ -45,7 +45,7 @@ version = 1  # This must be parsable as an int
 
 # The version as the user will see it. If blank, the version attribute will be 
 # used here. This should be a single word, with no spaces.
-prettyVersion = 1.0.0  # This is treated as a String
+prettyVersion = 0.9  # This is treated as a String
 
 # The min and max revision of Processing compatible with your Library.
 # Note that these fields use the revision and not the version of Processing, 

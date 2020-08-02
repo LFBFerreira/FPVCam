@@ -290,25 +290,13 @@ public class FpvCam extends PeasyCam {
      * @param direction
      */
     private void panCamera(PVector direction) {
-        // calculates the necessary rotation to math the desired direction with the camera rotation
-        float[] rotations = getRotations();
-        PVector adjustedMove = rotateXYZ(direction, rotations[0], -rotations[1], -rotations[2]);
+        //translate direction, which is in camera's location frame, into global frame
+        Vector3D globalDir = getRotation().applyTo(new Vector3D(direction.x, direction.y, direction.z));
 
-        float[] lookPoint = getLookAt();
-        PVector center = new PVector(lookPoint[0], lookPoint[1], lookPoint[2]);
-
-        // calculate the camera's new look-at point
-        center = center.add(adjustedMove);
-
-        // limit movement in Y or not
-        if (panLockY) {
-            newLookAt = new PVector(center.x, lookPoint[1], center.z);
-        } else {
-            newLookAt = new PVector(lookPoint[0], center.y, lookPoint[2]);
-        }
-
-        // Peasy lookAt call
-        lookAt(newLookAt.x, newLookAt.y, newLookAt.z, 0);
+        //move the center (the camera's target) in globalDir direction.
+        Vector3D newCenter = getCenter().add(new Vector3D(globalDir.getX(), globalDir.getY(), globalDir.getZ()));
+        
+        lookAt(newCenter.getX(),newCenter.getY(),newCenter.getZ(),0);
     }
 
     /**

@@ -1,6 +1,7 @@
 package space.luisferreira.cam;
 
 import processing.core.PApplet;
+import processing.core.PGraphics;
 import processing.core.PVector;
 
 import com.google.gson.Gson;

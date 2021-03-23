@@ -1,6 +1,7 @@
 package space.luisferreira.cam.test;
 
 import processing.core.PApplet;
+import processing.core.PGraphics;
 import processing.event.KeyEvent;
 import space.luisferreira.cam.FpvCam;
 import peasy.PeasyCam;
@@ -39,9 +40,14 @@ public class Keyboard_Simple extends PApplet {
         // https://discourse.processing.org/t/peasycam-minimum-maximum-distance/6635
         this.perspective(PI / CAMERA_FOVY, (float) width / height, 1, CAMERA_ZFAR);
 
+        scale( -1, 1);
+
         // draw objects
         lights();
         scale(2);
+
+        drawAxis(g, false, 30, 3);
+
         noStroke();
         fill(0, 255, 100);
         circle(0, 0, 10);
@@ -50,6 +56,10 @@ public class Keyboard_Simple extends PApplet {
         fill(0, 0, 255);
         box(10);
         popMatrix();
+
+
+
+        //image(g, -g.width, 0);
     }
 
     public void keyEvent(KeyEvent event) {
@@ -99,6 +109,48 @@ public class Keyboard_Simple extends PApplet {
                 break;
             case ' ':
                 camera.stop();
+        }
+    }
+
+    private void drawAxis(PGraphics g, Boolean loadBuffer, int axisLength, int axisThickness) {
+        if (loadBuffer) {
+            g.beginDraw();
+        }
+
+        g.pushStyle();
+
+        // X axis, red
+        g.strokeWeight(0.5f);
+        g.fill(180, 0, 0, 80);
+        g.stroke(255, 0, 0);
+
+        g.pushMatrix();
+        g.translate(axisLength / 2, 0, 0);
+        g.box(axisLength, axisThickness, axisThickness);
+        g.popMatrix();
+
+        // Y axis, green
+        g.fill(0, 180, 0, 80);
+        g.stroke(0, 255, 0);
+
+        g.pushMatrix();
+        g.translate(0, axisLength / 2, 0);
+        g.box(axisThickness, axisLength, axisThickness);
+        g.popMatrix();
+
+        // Z axis, blue
+        g.fill(0, 0, 180, 80);
+        g.stroke(0, 0, 255);
+
+        g.pushMatrix();
+        g.translate(0, 0, axisLength / 2);
+        g.box(axisThickness, axisThickness, axisLength);
+        g.popMatrix();
+
+        g.popStyle();
+
+        if (loadBuffer) {
+            g.endDraw();
         }
     }
 }

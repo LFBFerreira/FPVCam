@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"space.luisferreira.cam.test","l":"Camera_Positions"},{"p":"space.luisferreira.cam","l":"FpvCam"},{"p":"space.luisferreira.cam.test","l":"Keyboard_Simple"}]
